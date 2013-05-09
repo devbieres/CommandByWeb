@@ -1,0 +1,38 @@
+command_homepage:
+    pattern:  /
+    defaults: { _controller: DevBieresCommandBundle:Default:index }
+
+generic:
+    pattern: /generic
+    defaults: { _controller: DevBieresCommandBundle:Command:Generic }
+
+list:
+    pattern: /command/list
+    defaults: { _controller: DevBieresCommandBundle:Command:List }
+
+clear_cache:
+    pattern: /command/clearcache
+    defaults: { _controller: DevBieresCommandBundle:Command:ClearCache }
+
+doctrine_schema_create:
+    pattern: /command/doctrineschemacreate
+    defaults: { _controller: DevBieresCommandBundle:DoctrineCommand:DoctrineSchemaCreate }
+
+doctrine_schema_update:
+    pattern: /command/doctrineschemaupdate
+    defaults: { _controller: DevBieresCommandBundle:DoctrineCommand:DoctrineSchemaUpdate }
+
+doctrine_schema_validate:
+    pattern: /command/doctrineschemavalidate
+    defaults: { _controller: DevBieresCommandBundle:DoctrineCommand:DoctrineSchemaValidate }
+
+doctrine_schema_drop:
+    pattern: /command/doctrineschemadrop
+    defaults: { _controller: DevBieresCommandBundle:DoctrineCommand:DoctrineSchemaDrop }
+
+
+assets_install:
+    pattern: /command/assetsinstall
+    defaults: { _controller: DevBieresCommandBundle:Command:AssetsInstall }
+
+

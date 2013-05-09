@@ -1,0 +1,27 @@
+{% extends 'DevBieresCommandBundle:Command:Output.html.twig' %}
+
+{% block form %}
+<h3> {{ command }} </h3>
+
+<form action="{{path(route)}}" method="post" {{form_enctype(form) }} class="form-horizontal" >
+
+   {% for child in form.children %}
+        <div class="control-group" >
+            {% if "hidden" not in child.vars.block_prefixes %} 
+                   <label class="control-label" > {{ form_label(child) }} </label>
+            {% endif %}
+            <div class="controls" > {{ form_widget(child) }} </div>
+        </div>
+   {% endfor %}
+
+   <div class="control-group" >
+        <div class="controls" >
+            <button type="submit" value="Go" class="btn btn-primary" > Go </button>
+            <a href="{{path(route)}}" class="btn" > Help </a>
+        </div>
+   </div>
+
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>SF2 Command by http</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="{{ asset('bundles/devbierescommand/assets/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="{{ asset('bundles/devbierescommand/assets/bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('bundles/devbierescommand/css/main.css') }}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="{{ path('command_homepage') }}">SF2 Command by Http</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Général</li>
+              <li> <a href="{{ path('list') }} "> List </a> </li>
+              <li> <a href="{{ path('generic') }} "> Generic </a> </li>
+              <li> <a href="{{ path('clear_cache') }} "> Clear cache </a> </li>
+              <li> <a href="{{ path('assets_install') }}" > Publish Assets </a> </li>
+              <li class="nav-header">Doctrine</li>
+              <li> <a href="{{ path('doctrine_schema_create') }} "> Doctrine Schema Create </a> </li>
+              <li> <a href="{{ path('doctrine_schema_update') }} "> Doctrine Schema Update </a> </li>
+              <li> <a href="{{ path('doctrine_schema_drop') }} "> Doctrine Schema Drop </a> </li>
+              <li> <a href="{{ path('doctrine_schema_validate') }} "> Doctrine Schema Validate </a> </li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+              {% block body %}
+                   {% block form %} {% endblock %}
+                  <h3> Console </h3>
+                  <div class="console" >{% block console %} {% endblock %} </div>
+              {% endblock %}
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2013</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('bundles/devbierescommand/assets/jquery/jquery-1.9.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/devbierescommand/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+  </body>
+</html>

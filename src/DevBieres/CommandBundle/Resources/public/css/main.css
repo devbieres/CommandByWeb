@@ -1,0 +1,18 @@
+
+
+.console {
+  background-color: #3f3f3f;
+  color: white;
+  padding: 2%;
+} /* console */
+
+
+.console .output .commandline {
+		font-weight: bold;
+}
+.console .output .commandline .who, .console .output .commandline .host {
+		color: #8ae234;
+}
+.console .output .commandline .where {
+        color: #6b9fcf;
+}

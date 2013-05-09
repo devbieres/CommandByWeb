@@ -1,0 +1,6 @@
+{% extends 'DevBieresCommandBundle::layout.html.twig' %}
+
+{% block console %}
+  {# les paramètres de la console sont ceux passés à la vue principale donc pas besoin de les repasser #}
+  {{ include('DevBieresCommandBundle:Command:Console.html.twig') }}
+{% endblock %}

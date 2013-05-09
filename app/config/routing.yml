@@ -1,0 +1,4 @@
+dev_bieres_command:
+    resource: "@DevBieresCommandBundle/Resources/config/routing.yml"
+    prefix:   /command
+

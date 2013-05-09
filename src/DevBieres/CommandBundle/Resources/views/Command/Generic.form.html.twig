@@ -1,0 +1,30 @@
+{% extends 'DevBieresCommandBundle::layout.html.twig' %}
+
+{% block form %}
+<form action="{{ path('generic') }}" method="post" {{ form_enctype(form) }} class="form-horizontal" >
+   <div class="control-group" >
+      {{ form_label(form.command, null, { 'label_attr': { 'class' : 'control-label' } }) }}
+      <div class="controls" >
+         {{ form_errors(form.command) }}
+         {{ form_widget(form.command) }}
+      </div>
+   </div>
+   <div class="control-group" >
+      {{ form_label(form.params, null, { 'label_attr': { 'class' : 'control-label' } }) }}
+      <div class="controls" >
+         {{ form_errors(form.params) }}
+         {{ form_widget(form.params) }}
+      </div>
+   </div>
+   {{ form_rest(form) }}
+
+   <div class="control-group" >
+      <div class="controls" >
+         <button type="submit" class="btn">Execute</button>
+      </div>
+   </div>
+   
+</form>
+
+
+{% endblock %}

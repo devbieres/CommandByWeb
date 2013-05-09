@@ -1,0 +1,14 @@
+<div class="output" >
+   <div class="commandline" >
+        <span class="who" >{{ who }}@</span><span class="host" >{{ host }}</span> 
+        <span class="where" > {{ where }} $ </span>
+        php app/console
+        <span class="command" > {{ command }} </span>
+        <span class="param" > {% for key,value in param %} {{ key }}={{value}} {% endfor %}  </span>
+   </div>
+   {% for m in messages %}
+      {% if m|trim|length > 0 %}
+         > <span class="outputline" >    {{ m|raw }} </span><br/>
+      {% endif %}
+   {% endfor %}
+</div>

@@ -1,0 +1,7 @@
+parameters:
+#    dev_bieres_test.example.class: DevBieres\TestBundle\Example
+
+services:
+#    dev_bieres_test.example:
+#        class: %dev_bieres_test.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
