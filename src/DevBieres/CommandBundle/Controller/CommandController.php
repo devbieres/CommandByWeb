@@ -137,4 +137,18 @@ class CommandController extends BaseCommandController {
                 return $this->renderMessages($command, "", $messages);
 		} // /ListAction 
 
+		/**
+		 * Execute router:debug 
+		 */
+		public function RouterDebugAction() {
+				// Infos
+				$command = "router:debug";
+
+				// Execution
+				$messages = $this->runCommand($command);
+
+				// Rendering
+                return $this->renderMessages($command, "", $messages);
+		} // /ListAction 
+
 }

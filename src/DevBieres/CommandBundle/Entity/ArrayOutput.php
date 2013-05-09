@@ -23,6 +23,7 @@ use Symfony\Component\Console\Output\Output;
 /**
  * Implementation of the console output class.
  * As first implementation : very simple. It just stores the messages in an array
+ */
 class ArrayOutput extends Output {
 
 		/**
