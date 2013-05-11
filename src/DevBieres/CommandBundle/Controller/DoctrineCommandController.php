@@ -69,10 +69,10 @@ class DoctrineCommandController extends BaseCommandController {
 				} 	
 
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 
 		} /* /DoctrineSchemaCreateAction */
 
@@ -123,10 +123,10 @@ class DoctrineCommandController extends BaseCommandController {
 				} 	
 
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 
 		} // /DoctrineSchemaUpdateAction
 
@@ -177,10 +177,10 @@ class DoctrineCommandController extends BaseCommandController {
 				} 	
 
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 		} /* /DoctrineSchemaDropAction */
 
 		/**
@@ -220,10 +220,10 @@ class DoctrineCommandController extends BaseCommandController {
 				} 	
 
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 		} /* /DoctrineSchemaValidate */
 
 }

@@ -31,6 +31,21 @@ use Symfony\Component\HttpFoundation\Request;
 class GenerateCommandController extends BaseCommandController {
 
 		/**
+		 * Action when bundle generated
+		 * For the moment : simple page. The generation of bundle needs reload of kernel so redirect instead of render
+		 */
+		public function GenerateBundleSuccessAction(Request $request, $bundle) {
+				// Infos
+				$command = "generate:bundle";
+
+				$r = array(sprintf("Bundle generated : %s", $bundle));
+
+				// Rendering
+                return $this->renderMessages($command, "", $r);
+
+		} /* /GeneratedBundleAction */
+
+		/**
 		 * Execute the generate:bundle
 		 * @param Request $request
 		 */
@@ -42,7 +57,7 @@ class GenerateCommandController extends BaseCommandController {
 				// Data definition
 				$data = array(
 						'namespace'   => '',
-						'dir'         => '',
+						'dir'         => '../src',
 						'bundlename'  => '',
 						'format'      => 'yml',
 						'structure'   => false
@@ -76,16 +91,27 @@ class GenerateCommandController extends BaseCommandController {
 								"--structure"      => $data["structure"],
                                 "--no-interaction" => true
 						);
+						// URL must be generated BEFORE bundle generation as routing.yml gone be changes
+				        $path_success = $this->generateUrl($path . "_success", array('bundle' => $data["bundlename"] ));
 				} else {
 						// By defaults : help
 				       $params = array('--help' => true);
 				} 	
 
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
-				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				// Return
+				if(($request->isMethod('POST')) && (!$r["exception"])) {
+						// redirect
+						//$kernel = $this->container->get('kernel');
+						//$kernel->shutdown();
+						var_dump('POST et pas d exception');
+				        return $this->redirect($path_success);//, array('bundle' => $data["bundlename"])));
+				} else {
+				    // Rendering
+					return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
+				} 
 
 		} /* /GenerateBundleAction */
 

@@ -52,19 +52,19 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Général</li>
-              <li> <a href="{{ path('list') }} "> List </a> </li>
-              <li> <a href="{{ path('generic') }} "> Generic </a> </li>
-              <li> <a href="{{ path('clear_cache') }} "> Clear cache </a> </li>
-              <li> <a href="{{ path('assets_install') }}" > Publish Assets </a> </li>
-              <li> <a href="{{ path('router_debug') }} " > Router Debug </a> </li>
-              <li class="nav-header">Generate</li>
-              <li> <a href="{{ path('generate_bundle') }}"> Generate Bundle </a></li>
-              <li class="nav-header">Doctrine</li>
-              <li> <a href="{{ path('doctrine_schema_create') }} "> Doctrine Schema Create </a> </li>
-              <li> <a href="{{ path('doctrine_schema_update') }} "> Doctrine Schema Update </a> </li>
-              <li> <a href="{{ path('doctrine_schema_drop') }} "> Doctrine Schema Drop </a> </li>
-              <li> <a href="{{ path('doctrine_schema_validate') }} "> Doctrine Schema Validate </a> </li>
+              <li class="nav-header">  {{ 'menu.general.title'|trans }} </li>
+              <li> <a href="{{ path('generic') }} "> {{ 'menu.general.generic'|trans }} </a> </li>
+              <li> <a href="{{ path('list') }} "> {{ 'menu.general.list'|trans }} </a> </li>
+              <li> <a href="{{ path('clear_cache') }} "> {{ 'menu.general.clearcache'|trans }} </a> </li>
+              <li> <a href="{{ path('assets_install') }}" > {{ 'menu.general.assetsinstall'|trans }} </a> </li>
+              <li> <a href="{{ path('router_debug') }} " >  {{ 'menu.general.routerdebug'|trans }} </a> </li>
+              <li class="nav-header">{{ 'menu.generate.title'|trans }}</li>
+              <li> <a href="{{ path('generate_bundle') }}"> {{ 'menu.generate.bundle'|trans }} </a></li>
+              <li class="nav-header"> {{ 'menu.generate.title'|trans }}</li>
+              <li> <a href="{{ path('doctrine_schema_create') }} "> {{ 'menu.doctrine.create'|trans }} </a> </li>
+              <li> <a href="{{ path('doctrine_schema_update') }} "> {{ 'menu.doctrine.update'|trans }} </a> </li>
+              <li> <a href="{{ path('doctrine_schema_drop') }} "> {{ 'menu.doctrine.drop'|trans }} </a> </li>
+              <li> <a href="{{ path('doctrine_schema_validate') }} "> {{ 'menu.doctrine.validate'|trans }} </a> </li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->

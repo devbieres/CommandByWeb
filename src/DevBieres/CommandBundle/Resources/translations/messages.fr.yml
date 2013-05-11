@@ -1,0 +1,31 @@
+title:
+   console: Console
+
+menu:
+    general:
+        title: Généraux
+        generic: form
+        list: list
+        clearcache: cache:clear
+        assetsinstall: assets:install
+        routerdebug: router:debug
+    generate:
+        title: Generate
+        bundle: generate:bundle
+    doctrine:
+        title: Doctrine
+        create: doctrine:schema:create
+        update: doctrine:schema:update
+        drop:   doctrine:schema:drop
+        validate: doctrine:schema:validate
+form:
+    command: Command
+    params: Paramètres
+    env: --env
+    nowarmup: --no-warmup
+    nooptionnalwarmers: --no-optional-warmers
+    symlink: --symlink
+    relative: --relative
+    target: target 
+
+    

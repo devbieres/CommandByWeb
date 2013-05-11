@@ -10,7 +10,7 @@
             {% if "hidden" not in child.vars.block_prefixes %} 
                    <label class="control-label" > {{ form_label(child) }} </label>
             {% endif %}
-            <div class="controls" > {{ form_widget(child) }} </div>
+            <div class="controls" > {{ form_widget(child, {'attr' : {'class': 'span9' } }) }} </div>
         </div>
    {% endfor %}
 

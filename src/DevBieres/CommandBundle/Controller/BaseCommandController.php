@@ -32,6 +32,10 @@ abstract class BaseCommandController extends Controller {
 
 		/**
 		 * From http://benjamin.leveque.me/symfony2-executer-une-commande-depuis-un-controller.html
+		 * Return an array containing the message for key messages and containing true or false for exception key
+		 * @param $command string the command to be run
+		 * @param $arguments array 
+		 * @return array infos about execution
 		 */
         protected function runCommand($command, $arguments = array())
 		{
@@ -45,17 +49,24 @@ abstract class BaseCommandController extends Controller {
 			
 			// Handle Kerner get and app loading
             $kernel = $this->container->get('kernel');
-            $app = new Application($kernel);
+			$app = new Application($kernel);
+
+			// Prepare the return
+			$return = array("messages" => "", "exception" => false);
 
 			try {
 			   // Run 
 			   $app->doRun($input, $output);
 			   // The output store messages in an array 
-			   return $output->getMessages();
+			   $return["messages"] = $output->getMessages();
 			} catch(\Exception $e) {
 			   // If command fails
-			   return array( $e->getMessage() );
+			   $return["messages"] = array($e->getMessage());
+			   $return["exception"] = true;
 			}//*/
+
+			// Return
+			return $return;
 		} // /runCommand
 
 		/**
@@ -149,8 +160,8 @@ abstract class BaseCommandController extends Controller {
 
 				// Form creation
 				$form = $this->createFormBuilder($data)
-						->add('command', 'text')
-						->add('params',  'text', array('required' => false))
+						->add('command', 'text', array('label' => 'form.command'))
+						->add('params',  'text', array('label' => 'form.params', 'required' => false))
 						->getForm();
 
 				// Post
@@ -163,9 +174,9 @@ abstract class BaseCommandController extends Controller {
 						$command = $data["command"];
 						$params = $this->buildParams($data["params"]);
 				        // Execution
-						$messages = $this->runCommand($command, $params);
+						$r = $this->runCommand($command, $params);
 						// Render
-                        return $this->renderMessages($data["command"], "", $messages);
+                        return $this->renderMessages($data["command"], "", $r["messages"]);
                         
 				} // / Post 
 

@@ -47,12 +47,13 @@ class CommandController extends BaseCommandController {
 				$form = $this->createFormBuilder($data)
 						->add('env', 'choice',
 								array(
-									'choices' => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
+									'label'    => 'form.env',
+									'choices'  => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
 									'required' => true
 								)
 						)
-						->add('nowarmup', 'checkbox', array('required' => false))
-						->add('nooptionnalwarmers', 'checkbox', array('required' => false))
+						->add('nowarmup', 'checkbox', array('label' => 'form.nowarmup', 'required' => false))
+						->add('nooptionnalwarmers', 'checkbox', array('label' => 'form.nooptionnalwarmers', 'required' => false))
 						->getForm();
 
 				// POST
@@ -72,10 +73,10 @@ class CommandController extends BaseCommandController {
 				} 	
 
 				// Exec
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 
 		} // /ClearCacheAction
 
@@ -92,9 +93,9 @@ class CommandController extends BaseCommandController {
 
 				// Form building
 				$form = $this->createFormBuilder($data)
-						->add('symlink', 'checkbox', array('required' => false))
-						->add('relative', 'checkbox', array('required' => false))
-						->add('dir',  'text')
+						->add('symlink', 'checkbox', array('label' => 'form.symlink', 'required' => false))
+						->add('relative', 'checkbox', array('label' => 'form.relative', 'required' => false))
+						->add('dir',  'text', array('label' => 'form.target'))
 						->getForm();
 
                 // POST 
@@ -115,10 +116,10 @@ class CommandController extends BaseCommandController {
 
 				
 				// Execution
-				$messages = $this->runCommand($command, $params);
+				$r = $this->runCommand($command, $params);
 
 				// Rendering
-				return $this->renderFormMessages($command, $params, $messages, $form, $path);
+				return $this->renderFormMessages($command, $params, $r["messages"], $form, $path);
 
 		} // /AssetsInstallAction
 
@@ -131,10 +132,10 @@ class CommandController extends BaseCommandController {
 				$command = "list";
 
 				// Execution
-				$messages = $this->runCommand($command);
+				$r = $this->runCommand($command);
 
 				// Rendering
-                return $this->renderMessages($command, "", $messages);
+                return $this->renderMessages($command, "", $r["messages"]);
 		} // /ListAction 
 
 		/**
@@ -145,10 +146,10 @@ class CommandController extends BaseCommandController {
 				$command = "router:debug";
 
 				// Execution
-				$messages = $this->runCommand($command);
+				$r = $this->runCommand($command);
 
 				// Rendering
-                return $this->renderMessages($command, "", $messages);
+                return $this->renderMessages($command, "", $r["messages"]);
 		} // /ListAction 
 
 }

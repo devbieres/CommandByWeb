@@ -33,8 +33,12 @@ doctrine_schema_drop:
 
 
 assets_install:
-    pattern: /command/assets/install
+    pattern: /command/assets/success
     defaults: { _controller: DevBieresCommandBundle:Command:AssetsInstall }
+
+generate_bundle_success:
+    pattern: /command/generate/bundle/success/{bundle}
+    defaults: { _controller: DevBieresCommandBundle:GenerateCommand:GenerateBundleSuccess }
 
 generate_bundle:
     pattern: /command/generate/bundle
