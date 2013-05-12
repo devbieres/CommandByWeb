@@ -26,6 +26,10 @@ form:
     nooptionnalwarmers: --no-optional-warmers
     symlink: --symlink
     relative: --relative
-    target: target 
+    target: target
+    dumpsql: --dump-sql
+    mode: Mode
+    complete: --complete
+    fulldatabase: --full-database
 
     

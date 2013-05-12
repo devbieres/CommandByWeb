@@ -68,12 +68,7 @@ class GenerateCommandController extends BaseCommandController {
 						->add('namespace', 'text', array('required' => true))
 						->add('dir', 'text', array('required' => true))
 						->add('bundlename', 'text', array('required' => true))
-						->add('format', 'choice',
-								array(
-										'choices' => array('yml' => 'yml', 'xml' => 'xml', 'php' => 'php', 'annotation' => 'annotation'),
-										'required' => true
-								)
-						)
+						->add('format', $this->getFormatChoiceType())
 						->add('structure', 'checkbox', array('required' => false))
 						->getForm();
 

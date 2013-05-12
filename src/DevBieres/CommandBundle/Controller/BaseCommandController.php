@@ -25,10 +25,29 @@ use Symfony\Component\Console\Output\NullOutput;
 use DevBieres\CommandBundle\Entity\ArrayOutput;
 use Symfony\Component\HttpFoundation\Request;
 
+use DevBieres\CommandBundle\Form\Type\EnvChoiceType;
+use DevBieres\CommandBundle\Form\Type\ModeSqlChoiceType;
+use DevBieres\CommandBundle\Form\Type\FormatChoiceType;
+
 /**
  * To avoid big controller, they are separated by "domain". So here is a base class
  */
 abstract class BaseCommandController extends Controller {
+
+		/**
+		 * Return a new EnvChoice for a form
+		 */
+		protected function getEnvChoiceType() { return new EnvChoiceType(); }
+
+		/**
+		 * Return new ModeSqlChoice for a form
+		 */
+		protected function getModeSqlChoiceType() { return new ModeSqlChoiceType(); }
+
+		/**
+		 * Return new FormatChoice for a form
+		 */
+		protected function getFormatChoiceType() { return new FormatChoiceType(); }
 
 		/**
 		 * From http://benjamin.leveque.me/symfony2-executer-une-commande-depuis-un-controller.html

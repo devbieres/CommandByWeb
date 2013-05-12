@@ -45,13 +45,7 @@ class CommandController extends BaseCommandController {
 
 				// Form building
 				$form = $this->createFormBuilder($data)
-						->add('env', 'choice',
-								array(
-									'label'    => 'form.env',
-									'choices'  => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
-									'required' => true
-								)
-						)
+						->add('env', $this->getEnvChoiceType())
 						->add('nowarmup', 'checkbox', array('label' => 'form.nowarmup', 'required' => false))
 						->add('nooptionnalwarmers', 'checkbox', array('label' => 'form.nooptionnalwarmers', 'required' => false))
 						->getForm();
@@ -65,7 +59,7 @@ class CommandController extends BaseCommandController {
 						$params = array(
 								"--env"                   => $data["env"],
 								"--no-warmup"             => $data["nowarmup"],
-								"--no-optional-warmers"  => $data["nooptionnalwarmers"]
+								"--no-optional-warmers"   => $data["nooptionnalwarmers"]
 						);
 				} else {
 						// By defaults : help

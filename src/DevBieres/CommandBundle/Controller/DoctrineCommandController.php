@@ -22,8 +22,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use DevBieres\CommandBundle\Entity\ArrayOutput;
 use Symfony\Component\HttpFoundation\Request;
+
+use DevBieres\CommandBundle\Entity\ArrayOutput;
 
 /**
  * Some doctrine command
@@ -44,13 +45,8 @@ class DoctrineCommandController extends BaseCommandController {
 
 				// Form Building 
 				$form = $this->createFormBuilder($data)
-						->add('env', 'choice',
-								array(
-										'choices' => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
-										'required' => true
-								)
-						)
-						->add('dumpsql', 'checkbox', array('required' => false))
+						->add('env', $this->getEnvChoiceType())
+						->add('dumpsql', 'checkbox', array('label' => 'form.dumpsql', 'required' => false))
 						->getForm();
 
 				// Post
@@ -90,19 +86,9 @@ class DoctrineCommandController extends BaseCommandController {
 
 				// Form building 
 				$form = $this->createFormBuilder($data)
-						->add('mode', 'choice',
-								array(
-										'choices' => array('dumpsql' => '--dump-sql', 'force' => '--force'),
-								        'required' => true
-								)
-						)
-						->add('complete', 'checkbox', array('required' => false))
-						->add('env', 'choice',
-								array(
-										'choices' => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
-										'required' => true
-								)
-						)
+						->add('mode', $this->getModeSqlChoiceType()) 
+						->add('complete', 'checkbox', array('label' => 'form.complete', 'required' => false))
+						->add('env', $this->getEnvChoiceType())
 						->getForm();
                 
 				// POST
@@ -144,19 +130,9 @@ class DoctrineCommandController extends BaseCommandController {
 
 				// Form building
 				$form = $this->createFormBuilder($data)
-						->add('mode', 'choice',
-								array(
-										'choices' => array('dumpsql' => '--dump-sql', 'force' => '--force'),
-								        'required' => true
-								)
-						)
-						->add('env', 'choice',
-								array(
-										'choices' => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
-										'required' => true
-								)
-						)
-						->add('full', 'checkbox', array('required' => false))
+						->add('mode', $this->getModeSqlChoiceType()) 
+						->add('env', $this->getEnvChoiceType())
+						->add('full', 'checkbox', array('label' => 'form.fulldatabase','required' => false))
 						->getForm();
 
 				// POST
@@ -197,12 +173,7 @@ class DoctrineCommandController extends BaseCommandController {
 
 				// Form building
 				$form = $this->createFormBuilder($data)
-						->add('env', 'choice',
-								array(
-										'choices' => array('dev' => 'dev', 'test' => 'test', 'prod' => 'prod'),
-										'required' => true
-								)
-						)
+						->add('env', $this->getEnvChoiceType())
 						->getForm();
 
 				// POST
