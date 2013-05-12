@@ -34,6 +34,22 @@ use DevBieres\CommandBundle\Form\Type\FormatChoiceType;
  */
 abstract class BaseCommandController extends Controller {
 
+		const WAR_WRITEACCESS = "writeaccess";
+		const WAR_RELOAD = "needreload";
+
+		/**
+		 * Store a warning
+		 * @param string $message will be send to translation
+		 */
+		protected function storeWarning($message) { 
+
+				$message = $this->get('translator')->trans($message);
+
+				//$this->get('session')->getFlashBag()->('warning', $message);
+				$this->get('session')->getFlashBag()->add('warning', $message);
+
+		} /* /storeWarning */
+
 		/**
 		 * Return a new EnvChoice for a form
 		 */

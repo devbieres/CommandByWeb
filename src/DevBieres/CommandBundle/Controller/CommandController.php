@@ -66,6 +66,10 @@ class CommandController extends BaseCommandController {
 				        $params = array('--help' => true);
 				} 	
 
+				// Warning
+				$this->storeWarning(BaseCommandController::WAR_RELOAD);
+				$this->storeWarning(BaseCommandController::WAR_WRITEACCESS);
+
 				// Exec
 				$r = $this->runCommand($command, $params);
 
@@ -107,6 +111,10 @@ class CommandController extends BaseCommandController {
 						// By defaults : help
 						$params = array('--help' => true);
 				}
+
+				// Warning
+				//$this->storeWarning(BaseCommandController::WAR_RELOAD);
+				$this->storeWarning(BaseCommandController::WAR_WRITEACCESS);
 
 				
 				// Execution

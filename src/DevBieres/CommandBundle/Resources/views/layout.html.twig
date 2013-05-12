@@ -69,6 +69,14 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
+              {% if app.session.flashbag.has('warning') %}
+                  <div class="alert warning" >
+                     <h3> {{ 'warning'|trans }} </h3>
+                     <ul class="unstyled" >
+                        {% for flashMessage in app.session.flashbag.get('warning') %} <li> {{ flashMessage }} </li> {% endfor %}
+                     </ul>
+                  </div>
+              {% endif %}
               {% block body %}
                    {% block form %} {% endblock %}
                   <h3> Console </h3>

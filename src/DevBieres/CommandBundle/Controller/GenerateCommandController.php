@@ -93,6 +93,10 @@ class GenerateCommandController extends BaseCommandController {
 				       $params = array('--help' => true);
 				} 	
 
+				// Warning
+				$this->storeWarning(BaseCommandController::WAR_RELOAD);
+				$this->storeWarning(BaseCommandController::WAR_WRITEACCESS);
+
 				// Execution
 				$r = $this->runCommand($command, $params);
 
