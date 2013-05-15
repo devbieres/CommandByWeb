@@ -51,6 +51,16 @@ abstract class BaseCommandController extends Controller {
 		} /* /storeWarning */
 
 		/**
+		 * Store an error
+		 * @param string $message 
+		 */
+		protected function storeError($message) { 
+
+				$this->get('session')->getFlashBag()->add('error', $message);
+
+		} /* /storeWarning */
+
+		/**
 		 * Return a new EnvChoice for a form
 		 */
 		protected function getEnvChoiceType() { return new EnvChoiceType(); }
@@ -96,6 +106,7 @@ abstract class BaseCommandController extends Controller {
 			   $return["messages"] = $output->getMessages();
 			} catch(\Exception $e) {
 			   // If command fails
+			   $this->storeError($e->getMessage());
 			   $return["messages"] = array($e->getMessage());
 			   $return["exception"] = true;
 			}//*/

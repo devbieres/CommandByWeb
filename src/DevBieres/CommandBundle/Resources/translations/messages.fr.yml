@@ -1,6 +1,7 @@
 title:
    console: Console
 warning: Attention
+error: Erreur
 needreload: Cette commande peut entraîner une erreur ou une page blanche. Avant de râler : recharger.
 writeaccess: Cette commande nécessite des droits d'écriture sur certains répertoires.
 menu:
