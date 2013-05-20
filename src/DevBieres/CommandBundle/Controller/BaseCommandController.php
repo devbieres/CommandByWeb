@@ -22,7 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\NullOutput;
-use DevBieres\CommandBundle\Entity\ArrayOutput;
+use DevBieres\CommandBundle\Entity\Tools\ArrayOutput;
 use Symfony\Component\HttpFoundation\Request;
 
 use DevBieres\CommandBundle\Form\Type\EnvChoiceType;

@@ -1,0 +1,8 @@
+   {% for child in children %}
+        {% if child.hasChildren %}
+           <h3> {{ child.get('name') }} </h3>
+           {{ include ('DevBieresCommandBundle:Command:Form.Fields.html.twig', { 'children': child.children }) }}
+        {% else %}
+           {{ include ('DevBieresCommandBundle:Command:Form.Field.html.twig', { 'child': child }) }}
+        {% endif %}
+   {% endfor %}

@@ -2,6 +2,19 @@ parameters:
 #    dev_bieres_command.example.class: DevBieres\CommandBundle\Example
 
 services:
-#    dev_bieres_command.example:
-#        class: %dev_bieres_command.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+   devbieres.command.type.bundle:
+     class: DevBieres\CommandBundle\Form\Type\BundleChoiceType
+     arguments:
+       - "@service_container"
+     tags:
+       - { name: form.type, alias: bundle }
+   devbieres.command.type.format:
+     class: DevBieres\CommandBundle\Form\Type\FormatChoiceType
+     tags:
+       - { name: form.type, alias: formatchoice }
+   devbieres.command.type.fieldtype:
+     class: DevBieres\CommandBundle\Form\Type\FieldTypeChoiceType
+     tags:
+      - { name: form.type, alias: fieldtypechoice }
+
+

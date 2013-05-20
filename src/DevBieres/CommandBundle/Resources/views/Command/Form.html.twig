@@ -5,14 +5,7 @@
 
 <form action="{{path(route)}}" method="post" {{form_enctype(form) }} class="form-horizontal" >
 
-   {% for child in form.children %}
-        <div class="control-group" >
-            {% if "hidden" not in child.vars.block_prefixes %} 
-                   <label class="control-label" > {{ form_label(child) }} </label>
-            {% endif %}
-            <div class="controls" > {{ form_widget(child, {'attr' : {'class': 'span9' } }) }} </div>
-        </div>
-   {% endfor %}
+   {{ include ('DevBieresCommandBundle:Command:Form.Fields.html.twig', { 'children': form.children }) }}
 
    <div class="control-group" >
         <div class="controls" >

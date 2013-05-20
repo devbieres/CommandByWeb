@@ -34,5 +34,12 @@ form:
     mode: Mode
     complete: --complete
     fulldatabase: --full-database
-
-    
+    bundles: --bundle
+    bundle:
+       entity: --entity
+       mode:   --format
+       repo: --with-repository
+    fields:
+       name: name
+       type: type
+       length: length

@@ -36,6 +36,10 @@ assets_install:
     pattern: /command/assets/install
     defaults: { _controller: DevBieresCommandBundle:Command:AssetsInstall }
 
+generate_doctrine_entity:
+    pattern: /command/generate/entity
+    defaults: { _controller: DevBieresCommandBundle:GenerateCommand:GenerateEntity }
+
 generate_bundle_success:
     pattern: /command/generate/bundle/success/{bundle}
     defaults: { _controller: DevBieresCommandBundle:GenerateCommand:GenerateBundleSuccess }
